@@ -1,0 +1,13 @@
+{
+    "name": "UserAccount",
+    "alias": "useraccount",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\UserAccount\\Providers\\UserAccountServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

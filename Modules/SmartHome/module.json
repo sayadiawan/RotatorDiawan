@@ -1,0 +1,13 @@
+{
+    "name": "SmartHome",
+    "alias": "smarthome",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SmartHome\\Providers\\SmartHomeServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

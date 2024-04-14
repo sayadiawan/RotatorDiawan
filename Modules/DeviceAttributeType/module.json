@@ -1,0 +1,13 @@
+{
+    "name": "DeviceAttributeType",
+    "alias": "deviceattributetype",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DeviceAttributeType\\Providers\\DeviceAttributeTypeServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

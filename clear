@@ -1,0 +1,319 @@
+[1mdiff --git a/Modules/User/Http/Controllers/UserController.php b/Modules/User/Http/Controllers/UserController.php[m
+[1mindex d815cf1..fdf76d3 100644[m
+[1m--- a/Modules/User/Http/Controllers/UserController.php[m
+[1m+++ b/Modules/User/Http/Controllers/UserController.php[m
+[36m@@ -5,7 +5,6 @@[m [mnamespace Modules\User\Http\Controllers;[m
+ use Illuminate\Contracts\Support\Renderable;[m
+ use Illuminate\Http\Request;[m
+ use Illuminate\Routing\Controller;[m
+[31m-use Illuminate\Support\Arr;[m
+ use Modules\User\Entities\User;[m
+ [m
+ class UserController extends Controller[m
+[36m@@ -86,22 +85,4 @@[m [mclass UserController extends Controller[m
+     {[m
+         //[m
+     }[m
+[31m-[m
+[31m-    //load datatable[m
+[31m-    public function data()[m
+[31m-    {[m
+[31m-        $data = User::all();[m
+[31m-        $hasil = array();[m
+[31m-        $result = array();[m
+[31m-        foreach ($data as $get_item) {[m
+[31m-            $hasil[] = array([m
+[31m-                'nama' => $get_item->name,[m
+[31m-                'email' => $get_item->email[m
+[31m-            );[m
+[31m-        }[m
+[31m-        $result = array ([m
+[31m-            'aaData' => $hasil[m
+[31m-         );[m
+[31m-        echo json_encode($result);[m
+[31m-    }[m
+ }[m
+[1mdiff --git a/Modules/User/Resources/views/index.blade.php b/Modules/User/Resources/views/index.blade.php[m
+[1mindex 4964a96..1ff836f 100644[m
+[1m--- a/Modules/User/Resources/views/index.blade.php[m
+[1m+++ b/Modules/User/Resources/views/index.blade.php[m
+[36m@@ -40,16 +40,206 @@[m
+     <div class="card">[m
+         <div class="card-body border-bottom py-3">[m
+             <div class="table-responsives">[m
+[31m-                <table class="table table-vcenter table-mobile-md card-table" id="set-table">[m
+[32m+[m[32m                <table class="table table-vcenter table-mobile-md card-table" id="myTable">[m
+                   <thead>[m
+                     <tr>[m
+                       <th>Name</th>[m
+[31m-                      <th>Email</th>[m
+[32m+[m[32m                      <th>Title</th>[m
+[32m+[m[32m                      <th>Role</th>[m
+                       <th class="w-1"></th>[m
+                     </tr>[m
+                   </thead>[m
+                   <tbody>[m
+[31m-               [m
+[32m+[m[32m                    <tr>[m
+[32m+[m[32m                      <td data-label="Name">[m
+[32m+[m[32m                        <div class="d-flex py-1 align-items-center">[m
+[32m+[m[32m                          <span class="avatar me-2" style="background-image: url(./static/avatars/010m.jpg)"></span>[m
+[32m+[m[32m                          <div class="flex-fill">[m
+[32m+[m[32m                            <div class="font-weight-medium">Thatcher Keel</div>[m
+[32m+[m[32m                            <div class="text-muted"><a href="#" class="text-reset">tkeelf@blogger.com</a></div>[m
+[32m+[m[32m                          </div>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td data-label="Title">[m
+[32m+[m[32m                        <div>VP Sales</div>[m
+[32m+[m[32m                        <div class="text-muted">Business Development</div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td class="text-muted" data-label="Role">[m
+[32m+[m[32m                        User[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td>[m
+[32m+[m[32m                        <div class="btn-list flex-nowrap">[m
+[32m+[m[32m                          <a href="#" class="btn btn-white">[m
+[32m+[m[32m                            Edit[m
+[32m+[m[32m                          </a>[m
+[32m+[m[32m                          <div class="dropdown">[m
+[32m+[m[32m                            <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">[m
+[32m+[m[32m                              Actions[m
+[32m+[m[32m                            </button>[m
+[32m+[m[32m                            <div class="dropdown-menu dropdown-menu-end">[m
+[32m+[m[32m                              <a class="dropdown-item" href="#">[m
+[32m+[m[32m                                Action[m
+[32m+[m[32m                              </a>[m
+[32m+[m[32m                              <a class="dropdown-item" href="#">[m
+[32m+[m[32m                                Another action[m
+[32m+[m[32m                              </a>[m
+[32m+[m[32m                            </div>[m
+[32m+[m[32m                          </div>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                    </tr>[m
+[32m+[m[32m                    <tr>[m
+[32m+[m[32m                      <td data-label="Name">[m
+[32m+[m[32m                        <div class="d-flex py-1 align-items-center">[m
+[32m+[m[32m                          <span class="avatar me-2" style="background-image: url(./static/avatars/005f.jpg)"></span>[m
+[32m+[m[32m                          <div class="flex-fill">[m
+[32m+[m[32m                            <div class="font-weight-medium">Dyann Escala</div>[m
+[32m+[m[32m                            <div class="text-muted"><a href="#" class="text-reset">descalag@usatoday.com</a></div>[m
+[32m+[m[32m                          </div>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td data-label="Title">[m
+[32m+[m[32m                        <div>Mechanical Systems Engineer</div>[m
+[32m+[m[32m                        <div class="text-muted">Sales</div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td class="text-muted" data-label="Role">[m
+[32m+[m[32m                        Admin[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td>[m
+[32m+[m[32m                        <div class="btn-list flex-nowrap">[m
+[32m+[m[32m                          <a href="#" class="btn btn-white">[m
+[32m+[m[32m                            Edit[m
+[32m+[m[32m                          </a>[m
+[32m+[m[32m                          <div class="dropdown">[m
+[32m+[m[32m                            <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">[m
+[32m+[m[32m                              Actions[m
+[32m+[m[32m                            </button>[m
+[32m+[m[32m                            <div class="dropdown-menu dropdown-menu-end">[m
+[32m+[m[32m                              <a class="dropdown-item" href="#">[m
+[32m+[m[32m                                Action[m
+[32m+[m[32m                              </a>[m
+[32m+[m[32m                              <a class="dropdown-item" href="#">[m
+[32m+[m[32m                                Another action[m
+[32m+[m[32m                              </a>[m
+[32m+[m[32m                            </div>[m
+[32m+[m[32m                          </div>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                    </tr>[m
+[32m+[m[32m                    <tr>[m
+[32m+[m[32m                      <td data-label="Name">[m
+[32m+[m[32m                        <div class="d-flex py-1 align-items-center">[m
+[32m+[m[32m                          <span class="avatar me-2" style="background-image: url(./static/avatars/006f.jpg)"></span>[m
+[32m+[m[32m                          <div class="flex-fill">[m
+[32m+[m[32m                            <div class="font-weight-medium">Avivah Mugleston</div>[m
+[32m+[m[32m                            <div class="text-muted"><a href="#" class="text-reset">amuglestonh@intel.com</a></div>[m
+[32m+[m[32m                          </div>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td data-label="Title">[m
+[32m+[m[32m                        <div>Actuary</div>[m
+[32m+[m[32m                        <div class="text-muted">Sales</div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td class="text-muted" data-label="Role">[m
+[32m+[m[32m                        User[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td>[m
+[32m+[m[32m                        <div class="btn-list flex-nowrap">[m
+[32m+[m[32m                          <a href="#" class="btn btn-white">[m
+[32m+[m[32m                            Edit[m
+[32m+[m[32m                          </a>[m
+[32m+[m[32m                          <div class="dropdown">[m
+[32m+[m[32m                            <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">[m
+[32m+[m[32m                              Actions[m
+[32m+[m[32m                            </button>[m
+[32m+[m[32m                            <div class="dropdown-menu dropdown-menu-end">[m
+[32m+[m[32m                              <a class="dropdown-item" href="#">[m
+[32m+[m[32m                                Action[m
+[32m+[m[32m                              </a>[m
+[32m+[m[32m                              <a class="dropdown-item" href="#">[m
+[32m+[m[32m                                Another action[m
+[32m+[m[32m                              </a>[m
+[32m+[m[32m                            </div>[m
+[32m+[m[32m                          </div>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                    </tr>[m
+[32m+[m[32m                    <tr>[m
+[32m+[m[32m                      <td data-label="Name">[m
+[32m+[m[32m                        <div class="d-flex py-1 align-items-center">[m
+[32m+[m[32m                          <span class="avatar me-2">AA</span>[m
+[32m+[m[32m                          <div class="flex-fill">[m
+[32m+[m[32m                            <div class="font-weight-medium">Arlie Armstead</div>[m
+[32m+[m[32m                            <div class="text-muted"><a href="#" class="text-reset">aarmsteadi@yellowpages.com</a></div>[m
+[32m+[m[32m                          </div>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td data-label="Title">[m
+[32m+[m[32m                        <div>VP Quality Control</div>[m
+[32m+[m[32m                        <div class="text-muted">Accounting</div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td class="text-muted" data-label="Role">[m
+[32m+[m[32m                        Owner[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td>[m
+[32m+[m[32m                        <div class="btn-list flex-nowrap">[m
+[32m+[m[32m                          <a href="#" class="btn btn-white">[m
+[32m+[m[32m                            Edit[m
+[32m+[m[32m                          </a>[m
+[32m+[m[32m                          <div class="dropdown">[m
+[32m+[m[32m                            <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">[m
+[32m+[m[32m                              Actions[m
+[32m+[m[32m                            </button>[m
+[32m+[m[32m                            <div class="dropdown-menu dropdown-menu-end">[m
+[32m+[m[32m                              <a class="dropdown-item" href="#">[m
+[32m+[m[32m                                Action[m
+[32m+[m[32m                              </a>[m
+[32m+[m[32m                              <a class="dropdown-item" href="#">[m
+[32m+[m[32m                                Another action[m
+[32m+[m[32m                              </a>[m
+[32m+[m[32m                            </div>[m
+[32m+[m[32m                          </div>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                    </tr>[m
+[32m+[m[32m                    <tr>[m
+[32m+[m[32m                      <td data-label="Name">[m
+[32m+[m[32m                        <div class="d-flex py-1 align-items-center">[m
+[32m+[m[32m                          <span class="avatar me-2" style="background-image: url(./static/avatars/008f.jpg)"></span>[m
+[32m+[m[32m                          <div class="flex-fill">[m
+[32m+[m[32m                            <div class="font-weight-medium">Tessie Curzon</div>[m
+[32m+[m[32m                            <div class="text-muted"><a href="#" class="text-reset">tcurzonj@hp.com</a></div>[m
+[32m+[m[32m                          </div>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td data-label="Title">[m
+[32m+[m[32m                        <div>Research Nurse</div>[m
+[32m+[m[32m                        <div class="text-muted">Product Management</div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td class="text-muted" data-label="Role">[m
+[32m+[m[32m                        Admin[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                      <td>[m
+[32m+[m[32m                        <div class="btn-list flex-nowrap">[m
+[32m+[m[32m                          <a href="#" class="btn btn-white">[m
+[32m+[m[32m                            Edit[m
+[32m+[m[32m                          </a>[m
+[32m+[m[32m                          <div class="dropdown">[m
+[32m+[m[32m                            <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">[m
+[32m+[m[32m                              Actions[m
+[32m+[m[32m                            </button>[m
+[32m+[m[32m                            <div class="dropdown-menu dropdown-menu-end">[m
+[32m+[m[32m                              <a class="dropdown-item" href="#">[m
+[32m+[m[32m                                Action[m
+[32m+[m[32m                              </a>[m
+[32m+[m[32m                              <a class="dropdown-item" href="#">[m
+[32m+[m[32m                                Another action[m
+[32m+[m[32m                              </a>[m
+[32m+[m[32m                            </div>[m
+[32m+[m[32m                          </div>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                      </td>[m
+[32m+[m[32m                    </tr>[m
+                   </tbody>[m
+                 </table>[m
+               </div>[m
+[36m@@ -60,39 +250,5 @@[m
+ @endsection[m
+ [m
+ @section('script')[m
+[31m-<script>[m
+[31m-  $(function () {[m
+[31m-    // $('#set-table').DataTable({[m
+[31m-    //      processing: true,[m
+[31m-    //      serverSide: true,[m
+[31m-    //      ajax: "/user-data",[m
+[31m-    //      columns: [[m
+[31m-    //         { data: 'nama'},[m
+[31m-    //         { data: 'email' },[m
+[31m-    //      ][m
+[31m-    //   });[m
+[31m-    var table = $('#set-table').DataTable({[m
+[31m-      processing: true,[m
+[31m-      serverSide: true,[m
+[31m-      "aLengthMenu": [[m
+[31m-                [5, 10, 15, -1],[m
+[31m-                [5, 10, 15, "All"][m
+[31m-      ],[m
+[31m-      "iDisplayLength": 10,[m
+[31m-      "language": {[m
+[31m-          search: ""[m
+[31m-      },[m
+[31m-      "sAjaxSource": '/user-data',[m
+[31m-			"aoColumns":	[m
+[31m-          [[m
+[31m-            { "mData"	: "email"},[m
+[31m-            { "mData"	: "nama"},[m
+[31m-          ],[m
+ [m
+[31m-    });[m
+[31m-    table.on( 'draw', function () {[m
+[31m-        $('[data-toggle="tooltip"]').tooltip();[m
+[31m-    });[m
+[31m-  })[m
+[31m-</script>[m
+ @endsection[m
+\ No newline at end of file[m
+[1mdiff --git a/Modules/User/Routes/web.php b/Modules/User/Routes/web.php[m
+[1mindex e747b8b..93e9098 100644[m
+[1m--- a/Modules/User/Routes/web.php[m
+[1m+++ b/Modules/User/Routes/web.php[m
+[36m@@ -14,5 +14,4 @@[m
+ // Route::prefix('user')->group(function() {[m
+ //     Route::get('/', 'UserController@index');[m
+ // });[m
+[31m-Route::resource("user", UserController::class);[m
+[31m-Route::get('/user-data','UserController@data');[m
+\ No newline at end of file[m
+[32m+[m[32mRoute::resource("user", UserController::class);[m
+\ No newline at end of file[m
+[1mdiff --git a/resources/views/admin/layout.blade.php b/resources/views/admin/layout.blade.php[m
+[1mindex f5f1628..0b28792 100644[m
+[1m--- a/resources/views/admin/layout.blade.php[m
+[1m+++ b/resources/views/admin/layout.blade.php[m
+[36m@@ -20,10 +20,9 @@[m
+     <script src="{{asset('admin/js/tabler.min.js')}}"></script>[m
+     [m
+     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>[m
+[31m-    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>[m
+     <script>[m
+         $(document).ready( function () {[m
+[31m-            $('#set-data').DataTable({[m
+[32m+[m[32m            $('#myTable').DataTable({[m
+                 stateSave: true[m
+             });[m
+         } );[m

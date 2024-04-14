@@ -1,0 +1,13 @@
+{
+    "name": "SmartHomeDevice",
+    "alias": "smarthomedevice",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SmartHomeDevice\\Providers\\SmartHomeDeviceServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

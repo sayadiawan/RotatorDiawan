@@ -1,0 +1,13 @@
+{
+    "name": "Biodata",
+    "alias": "biodata",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Biodata\\Providers\\BiodataServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

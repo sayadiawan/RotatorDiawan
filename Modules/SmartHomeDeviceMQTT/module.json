@@ -1,0 +1,13 @@
+{
+    "name": "SmartHomeDeviceMQTT",
+    "alias": "smarthomedevicemqtt",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SmartHomeDeviceMQTT\\Providers\\SmartHomeDeviceMQTTServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
