@@ -21,8 +21,6 @@ class SmartHomeController extends Controller
   public function __construct()
   {
     $this->middleware('auth');
-    $this->firebase_premium = (new Factory)->withServiceAccount(__DIR__ . '/DiawanSmartHome.json');
-   $this->database_premium = $this->firebase_premium->withDatabaseUri('https://diawanpremium-smart-home-5758.asia-southeast1.firebasedatabase.app/')->createDatabase();
   }
 
   /**
