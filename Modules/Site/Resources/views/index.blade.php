@@ -66,8 +66,8 @@
                                                 <div
                                                     class="card-header d-flex align-items-center justify-content-between pb-10">
                                                     <div class="card-title mb-0">
-                                                        <h5 class="m-0 me-2">{{ $item-> }}</h5>
-                                                        <small class="text-muted">{{ $item->user->name }}</small>
+                                                        <h5 class="m-0 me-2">{{ $item->site_name }}</h5>
+                                                        <small class="text-muted">{{ $item->site_id_number }}</small>
                                                     </div>
 
                                                     <div class="dropdown">
@@ -80,40 +80,27 @@
                                                         <div class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="orederStatistics">
                                                             <a class="dropdown-item"
-                                                                href="{{ url('smarthome/device', $item->id_smarthomes) }}">Lihat
+                                                                href="{{ url('site/', $item->id_sites) }}">Lihat
                                                                 Site</a>
                                                             <div class="dropdown-divider"></div>
                                                             <a class="dropdown-item"
-                                                                href="{{ route('smarthome.show', $item->id_smarthomes) }}">Detail</a>
+                                                                href="{{ route('site.show', $item->id_sites) }}">Detail</a>
+
                                                             <a class="dropdown-item"
-                                                                href="{{ route('smarthomedevicemqtt.device.index', $item->id_smarthomes) }}">Detail
-                                                                MQTT</a>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('smarthome.edit', $item->id_smarthomes) }}">Edit</a>
+                                                                href="{{ route('site.edit', $item->id_sites) }}">Edit</a>
                                                             <a class="dropdown-item btn-hapus text-danger"
-                                                                href="javascript:void(0);"
-                                                                data-id="{{ $item->id_smarthomes }}"
-                                                                data-nama="{{ $item->user->name . ' - ' . $item->room->name_rooms }}">Hapus</a>
+                                                                href="javascript:void(0);" data-id="{{ $item->id_sites }}"
+                                                                data-nama="{{ $item->site_name . ' - ' . $item->site_id_number }}">Hapus</a>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                @php
-                                                    $count_smarthomedevice = \Modules\SmartHomeDevice\Entities\SmartHomeDevice::where(
-                                                        'smarthomes_id',
-                                                        $item->id_smarthomes,
-                                                    )
-                                                        ->whereHas('device', function ($query) {
-                                                            return $query->whereNull('deleted_at');
-                                                        })
-                                                        ->count();
-                                                @endphp
 
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                                         <div class="d-flex flex-column align-items-center gap-1">
-                                                            <h2 class="mb-2">{{ $count_smarthomedevice }}</h2>
-                                                            <span>Total Site</span>
+                                                            {{-- <h2 class="mb-2">{{ $count_smarthomedevice }}</h2>
+                                                            <span>Total Site</span> --}}
                                                         </div>
                                                     </div>
                                                 </div>

@@ -54,7 +54,7 @@ class SiteController extends Controller
  
   public function index(Request $request)
   {
-    $get_module = get_module_id('device');
+    $get_module = get_module_id('site');
 
 
     if (Auth::user()->usergroup->code_usergroup == "SAS" || Auth::user()->usergroup->code_usergroup == "ADM") {
@@ -74,15 +74,17 @@ class SiteController extends Controller
             ->whereNull('deleted_at');
         });
     }
-    
-    $result = $query->paginate(1)->withQueryString(); */
+    */
+    // $result = $query->paginate(1)->withQueryString(); 
+
+    // dd($query);
 
     $result = $query
-      ->filter(request(['search']))
+      // ->filter(request(['search']))
       ->paginate(10)
       ->withQueryString();
 
-    return view('smarthome::index', compact('get_module', 'result'));
+    return view('site::index', compact('get_module', 'result'));
     // if (request()->ajax()) {
     //   $datas = Site::select(['id_sites', 'name_devices', 'type', 'created_at'])
     //     ->orderBy('created_at', 'DESC')

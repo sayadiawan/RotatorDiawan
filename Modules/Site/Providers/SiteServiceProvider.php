@@ -15,7 +15,7 @@ class SiteServiceProvider extends ServiceProvider
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'device';
+    protected $moduleNameLower = 'site';
 
     /**
      * Boot the application events.
