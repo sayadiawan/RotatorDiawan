@@ -24,7 +24,7 @@ Route::get('/reset-password/{token}', [App\Http\Controllers\Auth\ResetPasswordCo
 Route::post('/reset-password-customes', [App\Http\Controllers\Auth\ResetPasswordController::class, 'ResetPasswordCustome'])->name('passwords.reset');
 
 //home
-// Route::get('/', [Modules\Home\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [LoginController::class, 'showLoginForm']);
 // Route::get('/home', [Modules\Home\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [LoginController::class, 'showLoginForm']);

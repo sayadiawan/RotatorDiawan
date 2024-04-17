@@ -15,7 +15,7 @@
                     <a href="{{ url('home') }}">Dashboard</a>
                 </li>
 
-                <li class="breadcrumb-item active">Data Smart Home</li>
+                <li class="breadcrumb-item active">Data Site</li>
             </ol>
         </nav>
 
@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Data Smart Home</h5>
+                        <h5 class="mb-0">Data Site</h5>
 
                         @if (isAccess('create', $get_module, auth()->user()->roles))
                             <a href="{{ route('smarthome.create') }}">
@@ -66,7 +66,7 @@
                                                 <div
                                                     class="card-header d-flex align-items-center justify-content-between pb-10">
                                                     <div class="card-title mb-0">
-                                                        <h5 class="m-0 me-2">{{ $item->room->name_rooms }}</h5>
+                                                        <h5 class="m-0 me-2">{{ $item-> }}</h5>
                                                         <small class="text-muted">{{ $item->user->name }}</small>
                                                     </div>
 

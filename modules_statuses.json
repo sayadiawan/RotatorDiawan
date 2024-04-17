@@ -16,12 +16,10 @@
     "Option": true,
     "Options": true,
     "SmartHome": true,
-    "Device": true,
+    "Site": true,
     "Room": true,
     "SmartHomeDevice": true,
     "Icon": true,
-    "DeviceAttributeType": true,
-    "DeviceAttributeControlling": true,
     "UserAccount": true,
     "DeviceAttribute": true,
     "SmartHomeDeviceMQTT": true

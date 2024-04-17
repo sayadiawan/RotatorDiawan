@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 use Kreait\Firebase\Factory;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Routing\Controller;
-use Modules\Device\Entities\Device;
+use Modules\Site\Entities\Site;
 use Illuminate\Support\Facades\Validator;
 use Modules\SmartHome\Entities\SmartHome;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\SmartHomeDevice\Entities\SmartHomeDevice;
 use Illuminate\Support\Facades\DB;
 
-use Modules\Device\Entities\DeviceAttributeValue;
-use Modules\Device\Entities\DeviceAttributeType;
+use Modules\Site\Entities\DeviceAttributeValue;
+use Modules\Site\Entities\DeviceAttributeType;
 
 class SmartHomeDeviceController extends Controller
 {
@@ -67,7 +67,7 @@ class SmartHomeDeviceController extends Controller
    */
   public function create($id_smarthome)
   {
-    $data_device = Device::orderBy('name_devices', 'asc')->get();
+    $data_device = Site::orderBy('name_devices', 'asc')->get();
     $data_smarthome_device = SmartHomeDevice::where('smarthomes_id', $id_smarthome)->get();
 
     return view('smarthomedevice::create', compact('id_smarthome', 'data_device', 'data_smarthome_device'));
@@ -112,7 +112,7 @@ class SmartHomeDeviceController extends Controller
               $simpan = $post->save();
 
               // dapatkan device command itu sednri 
-              $device = Device::where('id_devices', $post->devices_id)->first();
+              $device = Site::where('id_sites', $post->devices_id)->first();
 
               foreach ($device->devicecommand as $key => $value) {
                 $value_firebase = [];
@@ -120,7 +120,7 @@ class SmartHomeDeviceController extends Controller
                 $value_firebase["id_device"] = $post->devices_id;
                 $value_firebase["value"] = $value->deviceatribute->code;
 
-                $this->database_premium->getReference("clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/smarthomes/" . $post->smarthomes_id . "/request/" . $value->id_devices_command)->set(
+                $this->database_premium->getReference("clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/smarthomes/" . $post->smarthomes_id . "/request/" . $value->id_sites_command)->set(
                   $value_firebase
                 );
               }
@@ -220,7 +220,7 @@ class SmartHomeDeviceController extends Controller
     try {
       // dd($request->all());
 
-      $device=Device::findOrFail( $id_device);
+      $device=Site::findOrFail( $id_device);
       
       
  

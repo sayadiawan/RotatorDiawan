@@ -264,7 +264,7 @@
 @endpush
 
 @section('title')
-    Data Device untuk Smart Home
+    Data Site untuk Smart Home
 @endsection
 
 @section('content')
@@ -279,7 +279,7 @@
                     <a href="{{ route('smarthome.index') }}">Data Smart Home</a>
                 </li>
 
-                <li class="breadcrumb-item active">Data Device untuk Smart Home</li>
+                <li class="breadcrumb-item active">Data Site untuk Smart Home</li>
             </ol>
         </nav>
 
@@ -311,7 +311,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Data Smart Home Device</h5>
+                        <h5 class="mb-0">Data Smart Home Site</h5>
 
                         @if (isAccess('create', $get_module, auth()->user()->roles))
                             <a href="{{ url('smarthome/device/create', $id_smarthome) }}">
@@ -416,7 +416,7 @@
                                                                 {{-- modal control manual --}}
                                                                 <div class="offcanvas-body my-auto mx-0 flex-grow-0">
                                                                     <form
-                                                                        action="{{ url('/smarthome/device/store-control-manual', [$id_smarthome, $item->device->id_devices]) }}"
+                                                                        action="{{ url('/smarthome/device/store-control-manual', [$id_smarthome, $item->device->id_sites]) }}"
                                                                         method="POST"
                                                                         id="form-control-manual_{{ $index }}">
                                                                         @csrf
@@ -457,7 +457,7 @@
                                                                                 <div class="row">
                                                                                     @if ($item->device->deviceattributetype->is_switch_device_attribute_type == '1')
                                                                                         <style>
-                                                                                            .onoffswitch_{{ $item->device->id_devices }} {
+                                                                                            .onoffswitch_{{ $item->device->id_sites }} {
                                                                                                 position: relative;
                                                                                                 width: 90px;
                                                                                                 -webkit-user-select: none;
@@ -465,13 +465,13 @@
                                                                                                 -ms-user-select: none;
                                                                                             }
 
-                                                                                            .onoffswitch-checkbox_{{ $item->device->id_devices }} {
+                                                                                            .onoffswitch-checkbox_{{ $item->device->id_sites }} {
                                                                                                 position: absolute;
                                                                                                 opacity: 0;
                                                                                                 pointer-events: none;
                                                                                             }
 
-                                                                                            .onoffswitch-label_{{ $item->device->id_devices }} {
+                                                                                            .onoffswitch-label_{{ $item->device->id_sites }} {
                                                                                                 display: block;
                                                                                                 overflow: hidden;
                                                                                                 cursor: pointer;
@@ -479,15 +479,15 @@
                                                                                                 border-radius: 20px;
                                                                                             }
 
-                                                                                            .onoffswitch-inner_{{ $item->device->id_devices }} {
+                                                                                            .onoffswitch-inner_{{ $item->device->id_sites }} {
                                                                                                 display: block;
                                                                                                 width: 200%;
                                                                                                 margin-left: -100%;
                                                                                                 transition: margin 0.3s ease-in 0s;
                                                                                             }
 
-                                                                                            .onoffswitch-inner_{{ $item->device->id_devices }}:before,
-                                                                                            .onoffswitch-inner_{{ $item->device->id_devices }}:after {
+                                                                                            .onoffswitch-inner_{{ $item->device->id_sites }}:before,
+                                                                                            .onoffswitch-inner_{{ $item->device->id_sites }}:after {
                                                                                                 display: block;
                                                                                                 float: left;
                                                                                                 width: 50%;
@@ -502,7 +502,7 @@
                                                                                             }
 
 
-                                                                                            .onoffswitch-switch_{{ $item->device->id_devices }} {
+                                                                                            .onoffswitch-switch_{{ $item->device->id_sites }} {
                                                                                                 display: block;
                                                                                                 width: 18px;
                                                                                                 margin: 6px;
@@ -516,15 +516,15 @@
                                                                                                 transition: all 0.3s ease-in 0s;
                                                                                             }
 
-                                                                                            .onoffswitch-checkbox_{{ $item->device->id_devices }}:checked+.onoffswitch-label_{{ $item->device->id_devices }} .onoffswitch-inner_{{ $item->device->id_devices }} {
+                                                                                            .onoffswitch-checkbox_{{ $item->device->id_sites }}:checked+.onoffswitch-label_{{ $item->device->id_sites }} .onoffswitch-inner_{{ $item->device->id_sites }} {
                                                                                                 margin-left: 0;
                                                                                             }
 
-                                                                                            .onoffswitch-checkbox_{{ $item->device->id_devices }}:checked+.onoffswitch-label_{{ $item->device->id_devices }} .onoffswitch-switch_{{ $item->device->id_devices }} {
+                                                                                            .onoffswitch-checkbox_{{ $item->device->id_sites }}:checked+.onoffswitch-label_{{ $item->device->id_sites }} .onoffswitch-switch_{{ $item->device->id_sites }} {
                                                                                                 right: 0px;
                                                                                             }
 
-                                                                                            .onoffswitch-inner_{{ $item->device->id_devices }}:before {
+                                                                                            .onoffswitch-inner_{{ $item->device->id_sites }}:before {
                                                                                                 content: "{{ $item->device->deviceattributetype->deviceattributetypeswitch->on_txt_device_attribute_type_switch }}";
                                                                                                 padding-left: 10px;
                                                                                                 color: #fff !important;
@@ -532,7 +532,7 @@
                                                                                                 border-color: #595cd9 !important;
                                                                                             }
 
-                                                                                            .onoffswitch-inner_{{ $item->device->id_devices }}:after {
+                                                                                            .onoffswitch-inner_{{ $item->device->id_sites }}:after {
                                                                                                 content: "{{ $item->device->deviceattributetype->deviceattributetypeswitch->off_txt_device_attribute_type_switch }}";
                                                                                                 padding-right: 10px;
                                                                                                 background-color: #EEEEEE;
@@ -545,38 +545,38 @@
 
                                                                                         <div class="col-3">
                                                                                             <div
-                                                                                                class="onoffswitch_{{ $item->device->id_devices }}">
+                                                                                                class="onoffswitch_{{ $item->device->id_sites }}">
                                                                                                 <input type="checkbox"
-                                                                                                    name="smarthome_device_control_switch_{{ $item->device->id_devices }}"
-                                                                                                    class="onoffswitch-checkbox_{{ $item->device->id_devices }} smarthome_device_control_switch_{{ $index }}"
-                                                                                                    id="myonoffswitch_{{ $item->device->id_devices }}"
+                                                                                                    name="smarthome_device_control_switch_{{ $item->device->id_sites }}"
+                                                                                                    class="onoffswitch-checkbox_{{ $item->device->id_sites }} smarthome_device_control_switch_{{ $index }}"
+                                                                                                    id="myonoffswitch_{{ $item->device->id_sites }}"
                                                                                                     tabindex="0"
-                                                                                                    {{-- onchange="deviceControlChange({{ $index }},'{{ $item->device->id_devices }}')" --}}
+                                                                                                    {{-- onchange="deviceControlChange({{ $index }},'{{ $item->device->id_sites }}')" --}}
                                                                                                     {{ isset($switch) ? ((int) $switch == 1 ? 'checked' : '') : 'checked' }}>
                                                                                                 <label
-                                                                                                    class="onoffswitch-label_{{ $item->device->id_devices }}"
-                                                                                                    for="myonoffswitch_{{ $item->device->id_devices }}"
-                                                                                                    id="label_onoffswitch-label_{{ $item->device->id_devices }}">
+                                                                                                    class="onoffswitch-label_{{ $item->device->id_sites }}"
+                                                                                                    for="myonoffswitch_{{ $item->device->id_sites }}"
+                                                                                                    id="label_onoffswitch-label_{{ $item->device->id_sites }}">
                                                                                                     <span
-                                                                                                        class="onoffswitch-inner_{{ $item->device->id_devices }}"></span>
+                                                                                                        class="onoffswitch-inner_{{ $item->device->id_sites }}"></span>
                                                                                                     <span
-                                                                                                        class="onoffswitch-switch_{{ $item->device->id_devices }}"></span>
+                                                                                                        class="onoffswitch-switch_{{ $item->device->id_sites }}"></span>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
                                                                                         <script>
-                                                                                            $('#myonoffswitch_{{ $item->device->id_devices }}').click(function() {
+                                                                                            $('#myonoffswitch_{{ $item->device->id_sites }}').click(function() {
                                                                                                 console.log("change switch");
 
                                                                                                 if ($(this).is(":checked")) {
                                                                                                     // console.log("checked");
                                                                                                     // client_mqtt.on("connect", () => {
-                                                                                                    client_mqtt.publish('pushValue', 'on switch {{ $item->device->id_devices }}')
+                                                                                                    client_mqtt.publish('pushValue', 'on switch {{ $item->device->id_sites }}')
                                                                                                     // })
                                                                                                 } else {
                                                                                                     // console.log("unchecked");
                                                                                                     // client_mqtt.on('connect', function() {
-                                                                                                    client_mqtt.publish('pushValue', 'off switch {{ $item->device->id_devices }}')
+                                                                                                    client_mqtt.publish('pushValue', 'off switch {{ $item->device->id_sites }}')
                                                                                                     // })
                                                                                                 }
                                                                                             });
@@ -593,16 +593,16 @@
                                                                                             client_mqtt.on('message', function(topic, message, packet) {
                                                                                                 if (topic == 'pushValue') {
 
-                                                                                                    if (message.toString() == "on switch {{ $item->device->id_devices }}") {
+                                                                                                    if (message.toString() == "on switch {{ $item->device->id_sites }}") {
 
-                                                                                                        if (!$("#myonoffswitch_{{ $item->device->id_devices }}").prop('checked')) {
-                                                                                                            $('#myonoffswitch_{{ $item->device->id_devices }}').prop('checked', true);
+                                                                                                        if (!$("#myonoffswitch_{{ $item->device->id_sites }}").prop('checked')) {
+                                                                                                            $('#myonoffswitch_{{ $item->device->id_sites }}').prop('checked', true);
                                                                                                         }
                                                                                                     }
-                                                                                                    if (message.toString() == "off switch {{ $item->device->id_devices }}") {
+                                                                                                    if (message.toString() == "off switch {{ $item->device->id_sites }}") {
 
-                                                                                                        if ($("#myonoffswitch_{{ $item->device->id_devices }}").prop('checked')) {
-                                                                                                            $('#myonoffswitch_{{ $item->device->id_devices }}').prop('checked', false);
+                                                                                                        if ($("#myonoffswitch_{{ $item->device->id_sites }}").prop('checked')) {
+                                                                                                            $('#myonoffswitch_{{ $item->device->id_sites }}').prop('checked', false);
                                                                                                         }
                                                                                                     }
                                                                                                 }
@@ -626,27 +626,27 @@
                                                                                             //   console.log(payload.toString());
                                                                                             //     // console.log(`Topic: ${topic}, Message: ${payload.toString()}, QoS: ${packet.qos}`)
                                                                                             // })
-                                                                                            // var onRef = database_premium.ref("clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_devices }}/value/on");
+                                                                                            // var onRef = database_premium.ref("clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_sites }}/value/on");
                                                                                             // onRef.on('value', function(onSnapshot) {
                                                                                             //   // console.log(onSnapshot);
                                                                                             //   if (onSnapshot.exists()) {
                                                                                             //   //   console.log(onSnapshot);
                                                                                             //     if(onSnapshot.val()==1){
-                                                                                            //       if(!$("#myonoffswitch_{{ $item->device->id_devices }}").prop('checked')){
-                                                                                            //         $('#myonoffswitch_{{ $item->device->id_devices }}').prop('checked', true);
+                                                                                            //       if(!$("#myonoffswitch_{{ $item->device->id_sites }}").prop('checked')){
+                                                                                            //         $('#myonoffswitch_{{ $item->device->id_sites }}').prop('checked', true);
                                                                                             //       }
 
                                                                                             //     }
                                                                                             //   }
 
                                                                                             // })
-                                                                                            // var offRef =database_premium.ref("clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_devices }}/value/off");
+                                                                                            // var offRef =database_premium.ref("clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_sites }}/value/off");
                                                                                             // offRef.on('value', function(offSnapshot) {
                                                                                             //   // console.log(offSnapshot);
                                                                                             //   if (offSnapshot.exists()) {
                                                                                             //     if(offSnapshot.val()==1){
-                                                                                            //       if($("#myonoffswitch_{{ $item->device->id_devices }}").prop('checked')){
-                                                                                            //         $('#myonoffswitch_{{ $item->device->id_devices }}').prop('checked', false);
+                                                                                            //       if($("#myonoffswitch_{{ $item->device->id_sites }}").prop('checked')){
+                                                                                            //         $('#myonoffswitch_{{ $item->device->id_sites }}').prop('checked', false);
                                                                                             //       }
                                                                                             //     }
                                                                                             //   }
@@ -718,11 +718,11 @@
 
                                                                                                 /* :::::::::::::: Required CSS */
                                                                                                 /* Locked */
-                                                                                                .lock_{{ $item->device->id_devices }}+label {
+                                                                                                .lock_{{ $item->device->id_sites }}+label {
                                                                                                     cursor: pointer;
                                                                                                 }
 
-                                                                                                .lock_{{ $item->device->id_devices }} {
+                                                                                                .lock_{{ $item->device->id_sites }} {
                                                                                                     width: 20px;
                                                                                                     height: 21px;
                                                                                                     border: 3px solid var(--locked-color);
@@ -733,7 +733,7 @@
                                                                                                     transition: all 0.1s ease-in-out;
                                                                                                 }
 
-                                                                                                .lock_{{ $item->device->id_devices }}:after {
+                                                                                                .lock_{{ $item->device->id_sites }}:after {
                                                                                                     content: "";
                                                                                                     display: block;
                                                                                                     background: var(--locked-color);
@@ -747,7 +747,7 @@
                                                                                                     transition: all 0.1s ease-in-out;
                                                                                                 }
 
-                                                                                                .lock_{{ $item->device->id_devices }}:before {
+                                                                                                .lock_{{ $item->device->id_sites }}:before {
                                                                                                     content: "";
                                                                                                     display: block;
                                                                                                     width: 14px;
@@ -765,49 +765,49 @@
                                                                                                 }
 
                                                                                                 /* Locked Hover */
-                                                                                                .lock_{{ $item->device->id_devices }}:hover:before {
+                                                                                                .lock_{{ $item->device->id_sites }}:hover:before {
                                                                                                     height: 12px;
                                                                                                 }
 
-                                                                                                .lock_{{ $item->device->id_devices }}+label:after {
+                                                                                                .lock_{{ $item->device->id_sites }}+label:after {
                                                                                                     content: '{{ $on }}';
                                                                                                 }
 
 
                                                                                                 /* Unlocked */
-                                                                                                .unlocked_{{ $item->device->id_devices }} {
+                                                                                                .unlocked_{{ $item->device->id_sites }} {
                                                                                                     transform: rotate(10deg);
                                                                                                 }
 
-                                                                                                .unlocked_{{ $item->device->id_devices }}:before {
+                                                                                                .unlocked_{{ $item->device->id_sites }}:before {
                                                                                                     bottom: 130%;
                                                                                                     left: 31%;
                                                                                                     margin-left: -11.5px;
                                                                                                     transform: rotate(-45deg);
                                                                                                 }
 
-                                                                                                .unlocked_{{ $item->device->id_devices }},
-                                                                                                .unlocked_{{ $item->device->id_devices }}:before {
+                                                                                                .unlocked_{{ $item->device->id_sites }},
+                                                                                                .unlocked_{{ $item->device->id_sites }}:before {
                                                                                                     border-color: var(--unlocked-color);
                                                                                                 }
 
-                                                                                                .unlocked_{{ $item->device->id_devices }}:after {
+                                                                                                .unlocked_{{ $item->device->id_sites }}:after {
                                                                                                     background: var(--unlocked-color);
                                                                                                 }
 
                                                                                                 /* Unlocked Hover */
-                                                                                                .unlocked_{{ $item->device->id_devices }}:hover {
+                                                                                                .unlocked_{{ $item->device->id_sites }}:hover {
                                                                                                     transform: rotate(3deg);
                                                                                                 }
 
-                                                                                                .unlocked_{{ $item->device->id_devices }}:hover:before {
+                                                                                                .unlocked_{{ $item->device->id_sites }}:hover:before {
                                                                                                     height: 10px;
                                                                                                     left: 40%;
                                                                                                     bottom: 124%;
                                                                                                     transform: rotate(-30deg);
                                                                                                 }
 
-                                                                                                .unlocked_{{ $item->device->id_devices }}+label:after {
+                                                                                                .unlocked_{{ $item->device->id_sites }}+label:after {
                                                                                                     content: '{{ $off }}';
                                                                                                 }
                                                                                             </style>
@@ -816,36 +816,36 @@
                                                                                                 style="padding-top: 10px">
 
                                                                                                 <span
-                                                                                                    class="lock_{{ $item->device->id_devices }}  {{ (int) $lock == 0 ? 'unlocked_' . $item->device->id_devices : '' }}"
+                                                                                                    class="lock_{{ $item->device->id_sites }}  {{ (int) $lock == 0 ? 'unlocked_' . $item->device->id_sites : '' }}"
                                                                                                     id="smarthome_device_control_lock_{{ $index }}">
                                                                                                 </span>
 
                                                                                                 <label for="lock"
-                                                                                                    class="text-lock_{{ $item->device->id_devices }}"
+                                                                                                    class="text-lock_{{ $item->device->id_sites }}"
                                                                                                     style="margin-left: 4px"><i></i></label>
                                                                                             </div>
                                                                                             <script>
-                                                                                                $(".lock_{{ $item->device->id_devices }}").click(function() {
-                                                                                                    // $(this).toggleClass('unlocked_{{ $item->device->id_devices }}');
-                                                                                                    if ($(this).hasClass('unlocked_{{ $item->device->id_devices }}')) {
-                                                                                                        $(".lock_{{ $item->device->id_devices }}").removeClass('unlocked_{{ $item->device->id_devices }}')
+                                                                                                $(".lock_{{ $item->device->id_sites }}").click(function() {
+                                                                                                    // $(this).toggleClass('unlocked_{{ $item->device->id_sites }}');
+                                                                                                    if ($(this).hasClass('unlocked_{{ $item->device->id_sites }}')) {
+                                                                                                        $(".lock_{{ $item->device->id_sites }}").removeClass('unlocked_{{ $item->device->id_sites }}')
                                                                                                     } else {
-                                                                                                        $(".lock_{{ $item->device->id_devices }}").addClass('unlocked_{{ $item->device->id_devices }}')
+                                                                                                        $(".lock_{{ $item->device->id_sites }}").addClass('unlocked_{{ $item->device->id_sites }}')
                                                                                                     }
-                                                                                                    deviceControlChange("{{ $index }}", "{{ $item->device->id_devices }}");
+                                                                                                    deviceControlChange("{{ $index }}", "{{ $item->device->id_sites }}");
                                                                                                 });
-                                                                                                $(".text-lock_{{ $item->device->id_devices }}").click(function() {
-                                                                                                    if ($(".lock_{{ $item->device->id_devices }}").hasClass('unlocked_{{ $item->device->id_devices }}')) {
+                                                                                                $(".text-lock_{{ $item->device->id_sites }}").click(function() {
+                                                                                                    if ($(".lock_{{ $item->device->id_sites }}").hasClass('unlocked_{{ $item->device->id_sites }}')) {
 
-                                                                                                        $(".lock_{{ $item->device->id_devices }}").removeClass('unlocked_{{ $item->device->id_devices }}')
+                                                                                                        $(".lock_{{ $item->device->id_sites }}").removeClass('unlocked_{{ $item->device->id_sites }}')
                                                                                                     } else {
-                                                                                                        $(".lock_{{ $item->device->id_devices }}").addClass('unlocked_{{ $item->device->id_devices }}')
+                                                                                                        $(".lock_{{ $item->device->id_sites }}").addClass('unlocked_{{ $item->device->id_sites }}')
                                                                                                     }
-                                                                                                    // $(".lock_{{ $item->device->id_devices }}").toggleClass('unlocked_{{ $item->device->id_devices }}');
-                                                                                                    deviceControlChange("{{ $index }}", "{{ $item->device->id_devices }}");
+                                                                                                    // $(".lock_{{ $item->device->id_sites }}").toggleClass('unlocked_{{ $item->device->id_sites }}');
+                                                                                                    deviceControlChange("{{ $index }}", "{{ $item->device->id_sites }}");
                                                                                                 });
                                                                                                 var lockRef = database_premium.ref(
-                                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_devices }}/value/lock"
+                                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_sites }}/value/lock"
                                                                                                 );
                                                                                                 lockRef.on('value', function(lockSnapshot) {
                                                                                                     // console.log(onSnapshot);
@@ -853,17 +853,17 @@
 
                                                                                                         if (lockSnapshot.val() == 1) {
 
-                                                                                                            if ($(".lock_{{ $item->device->id_devices }}").hasClass(
-                                                                                                                    'unlocked_{{ $item->device->id_devices }}')) {
-                                                                                                                $(".lock_{{ $item->device->id_devices }}").removeClass(
-                                                                                                                    'unlocked_{{ $item->device->id_devices }}')
+                                                                                                            if ($(".lock_{{ $item->device->id_sites }}").hasClass(
+                                                                                                                    'unlocked_{{ $item->device->id_sites }}')) {
+                                                                                                                $(".lock_{{ $item->device->id_sites }}").removeClass(
+                                                                                                                    'unlocked_{{ $item->device->id_sites }}')
                                                                                                             }
                                                                                                         }
                                                                                                     }
 
                                                                                                 })
                                                                                                 var unlockedRef = database_premium.ref(
-                                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_devices }}/value/unlocked"
+                                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_sites }}/value/unlocked"
                                                                                                 );
                                                                                                 unlockedRef.on('value', function(unlockedSnapshot) {
 
@@ -871,10 +871,10 @@
 
                                                                                                         //   console.log(onSnapshot);
                                                                                                         if (unlockedSnapshot.val() == 1) {
-                                                                                                            if (!$(".lock_{{ $item->device->id_devices }}").hasClass(
-                                                                                                                    'unlocked_{{ $item->device->id_devices }}')) {
-                                                                                                                $(".lock_{{ $item->device->id_devices }}").addClass(
-                                                                                                                    'unlocked_{{ $item->device->id_devices }}')
+                                                                                                            if (!$(".lock_{{ $item->device->id_sites }}").hasClass(
+                                                                                                                    'unlocked_{{ $item->device->id_sites }}')) {
+                                                                                                                $(".lock_{{ $item->device->id_sites }}").addClass(
+                                                                                                                    'unlocked_{{ $item->device->id_sites }}')
                                                                                                             }
                                                                                                         }
                                                                                                     }
@@ -913,7 +913,7 @@
                                                                             </div>
                                                                             <script>
                                                                                 var suhuRef = database_premium.ref(
-                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_devices }}/value/suhu"
+                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_sites }}/value/suhu"
                                                                                 );
                                                                                 suhuRef.on('value', function(suhuSnapshot) {
                                                                                     // console.log(onSnapshot);
@@ -937,7 +937,7 @@
                                                                                 })
 
                                                                                 var rangeRef = database_premium.ref(
-                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_devices }}/value/range"
+                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_sites }}/value/range"
                                                                                 );
                                                                                 rangeRef.on('value', function(rangeSnapshot) {
                                                                                     // console.log(onSnapshot);
@@ -1008,7 +1008,7 @@
                                                                             </div>
                                                                             <script>
                                                                                 var modeRef = database_premium.ref(
-                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_devices }}/value/mode"
+                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_sites }}/value/mode"
                                                                                 );
                                                                                 modeRef.on('value', function(modeSnapshot) {
                                                                                     // console.log(onSnapshot);
@@ -1060,7 +1060,7 @@
                                                                             </div>
                                                                             <script>
                                                                                 var colorRef = database_premium.ref(
-                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_devices }}/value/color"
+                                                                                    "clients-smart-home/c8879e6e-db31-44e4-905e-ee87f238076a/client/c8879e6e-db31-44e4-905e-ee87f238076a/devices/{{ $item->device->id_sites }}/value/color"
                                                                                 );
                                                                                 colorRef.on('value', function(colorSnapshot) {
                                                                                     // console.log(onSnapshot);
@@ -1096,8 +1096,8 @@
                                                     {{-- Dibutuhkan ada deskripsi device --}}
                                                     {{-- <span class="d-block">Transactions Apa aja coba test panjang</span> --}}
 
-                                                    <button type="button" id="mic_{{ $item->device->id_devices }}"
-                                                        data-id="{{ $item->device->id_devices }}"
+                                                    <button type="button" id="mic_{{ $item->device->id_sites }}"
+                                                        data-id="{{ $item->device->id_sites }}"
                                                         class="btn btn-sm rounded-pill btn-icon btn-danger">
                                                         <small class="text-white fw-semibold">
                                                             <i class="fas fa-microphone-slash"></i>
@@ -1179,10 +1179,10 @@
     <script>
         var data = @json($result);
         data.data.forEach(element => {
-            var id_devices = element.device.id_devices;
-            trigger_mic_smarthome[id_devices] = 0;
-            $("#mic_" + id_devices).click(function() {
-                if (trigger_mic_smarthome[id_devices] == 0) {
+            var id_sites = element.device.id_sites;
+            trigger_mic_smarthome[id_sites] = 0;
+            $("#mic_" + id_sites).click(function() {
+                if (trigger_mic_smarthome[id_sites] == 0) {
 
 
                     navigator.mediaDevices.getUserMedia({
@@ -1193,13 +1193,13 @@
 
                             stopRecordingAll()
 
-                            $("#mic_" + id_devices).removeClass('btn-danger');
-                            $("#mic_" + id_devices).addClass('btn-info');
-                            $("#mic_" + id_devices).find($(".fas")).toggleClass('fa-microphone')
+                            $("#mic_" + id_sites).removeClass('btn-danger');
+                            $("#mic_" + id_sites).addClass('btn-info');
+                            $("#mic_" + id_sites).find($(".fas")).toggleClass('fa-microphone')
                                 .toggleClass(
                                     'fa-microphone-slash');
 
-                            recorder[id_devices] = RecordRTC(stream, {
+                            recorder[id_sites] = RecordRTC(stream, {
                                 type: 'audio',
                                 recorderType: RecordRTC
                                     .StereoAudioRecorder, // force for all browsers
@@ -1210,7 +1210,7 @@
                                 ondataavailable: function(blob) {
                                     // chunks.push(blob)
                                     // sendToServer(blob)
-                                    sendToServerById(blob, id_devices)
+                                    sendToServerById(blob, id_sites)
                                     // console.log(blob);
 
                                     // blobs.push(blob);
@@ -1224,7 +1224,7 @@
                                 }
                             });
 
-                            recorder2[id_devices] = RecordRTC(stream, {
+                            recorder2[id_sites] = RecordRTC(stream, {
                                 type: 'audio',
                                 recorderType: RecordRTC
                                     .StereoAudioRecorder, // force for all browsers
@@ -1233,7 +1233,7 @@
 
                                 ondataavailable: function(blob) {
                                     // chunks.push(blob)
-                                    sendToServerById(blob, id_devices)
+                                    sendToServerById(blob, id_sites)
                                     // console.log(blob);
 
                                     // blobs.push(blob);
@@ -1248,7 +1248,7 @@
                             });
 
 
-                            recorder[id_devices].startRecording();
+                            recorder[id_sites].startRecording();
                             // Swal.showLoading ()
 
 
@@ -1288,7 +1288,7 @@
                             }).then((result) => {
                                 /* Read more about handling dismissals below */
                                 if (result.dismiss === Swal.DismissReason.timer) {
-                                    recorder2[id_devices].startRecording();
+                                    recorder2[id_sites].startRecording();
                                     // Swal.hideLoading ()
                                 }
                             })
@@ -1367,7 +1367,7 @@
                             }
 
 
-                            trigger_mic_smarthome[id_devices] = 1;
+                            trigger_mic_smarthome[id_sites] = 1;
                             // var refreshIntervalId = setInterval(() => {
                             //     // console.log("dfdsfds");
                             //     if (start == 0) {
@@ -1606,20 +1606,20 @@
                 recorder2["first"].stopRecording();
             }
             data.data.forEach(element => {
-                let id_devices = element.device.id_devices;
-                if (recorder[id_devices] != undefined && recorder[id_devices] != null) {
-                    recorder[id_devices].stopRecording();
+                let id_sites = element.device.id_sites;
+                if (recorder[id_sites] != undefined && recorder[id_sites] != null) {
+                    recorder[id_sites].stopRecording();
                 }
-                if (recorder2[id_devices] != undefined && recorder2[id_devices] != null) {
-                    recorder2[id_devices].stopRecording();
+                if (recorder2[id_sites] != undefined && recorder2[id_sites] != null) {
+                    recorder2[id_sites].stopRecording();
                 }
-                if (trigger_mic_smarthome[id_devices] == 1) {
-                    $('#mic_' + id_devices).removeClass('btn-info');
-                    $('#mic_' + id_devices).addClass('btn-danger');
-                    $('#mic_' + id_devices).find($('small')).find($(".fas")).toggleClass('fa-microphone')
+                if (trigger_mic_smarthome[id_sites] == 1) {
+                    $('#mic_' + id_sites).removeClass('btn-info');
+                    $('#mic_' + id_sites).addClass('btn-danger');
+                    $('#mic_' + id_sites).find($('small')).find($(".fas")).toggleClass('fa-microphone')
                         .toggleClass(
                             'fa-microphone-slash');
-                    trigger_mic_smarthome[id_devices] = 0;
+                    trigger_mic_smarthome[id_sites] = 0;
                 }
             });
             if (trigger_mic_smarthome["first"] == 1) {

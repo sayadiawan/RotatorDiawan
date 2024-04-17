@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\Uuids;
-use Modules\Device\Entities\Device;
+use Modules\Site\Entities\Site;
 use Modules\Room\Entities\Room;
 use Modules\SmartHome\Entities\SmartHome;
 use Modules\User\Entities\User as EntitiesUser;
@@ -44,6 +44,6 @@ class SmartHomeDevice extends Model
 
   public function device()
   {
-    return $this->belongsTo(Device::class, 'devices_id', 'id_devices')->withDefault();
+    return $this->belongsTo(Site::class, 'devices_id', 'id_sites')->withDefault();
   }
 }
