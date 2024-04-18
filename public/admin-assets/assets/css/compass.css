@@ -1,0 +1,482 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-collapse: collapse;
+}
+
+:root {
+    --bgcolor:rgb(12, 23, 29);
+    --bodycolor: #fff;
+    --red: red;
+    --blue: blue;
+    --hdgcolor: rgb(255, 136, 0);
+    --bodycolor: #fff;
+    --axiscolor:rgb(39, 39, 39);
+    --metal: linear-gradient(rgb(211, 224, 230), rgb(113, 127, 133) 50%, rgb(53, 68, 75) 50%, rgb(19, 25, 27) 100%);
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+body {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.messages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 30px;
+    text-align: center;
+    color: var(--bodycolor);
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.container {
+    width: 310px;
+    /* height: 360px; */
+    background: var(--bgcolor);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border: 1px solid var(--bodycolor);
+}
+
+.heading {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bgcolor);
+    color: var(--bodycolor);
+    border: solid 2px var(--bodycolor);
+    padding: 5px;
+    font-weight: 700;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    /* filter: hue-rotate(-0.25turn);
+    -webkit-filter: hue-rotate(-0.25turn); */
+}
+
+.compass {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 280px;
+    /* border: solid 1px #fff; */
+    /* background: rgb(24, 0, 110); */
+    background: var(--metal);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.moving {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 280px;
+    /* background: rgba(255, 255, 255, .1); */
+}
+
+.outer {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    /* background: var(--bodycolor); */
+    background: transparent;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+
+
+.inner {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: var(--bgcolor);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner .degs {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    /* background: rgba(255, 55, 255, .3); */
+    background: var(--bgcolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner .degs span {
+    position: absolute;
+    bottom: 125px;
+    width: 1px;
+    height: 125px;
+    background: var(--bodycolor);
+    transform: rotate(calc(10deg * var(--i)));
+    -webkit-transform: rotate(calc(10deg * var(--i)));
+    -moz-transform: rotate(calc(10deg * var(--i)));
+    -ms-transform: rotate(calc(10deg * var(--i)));
+    -o-transform: rotate(calc(10deg * var(--i)));
+    transform-origin: 0 125px;
+}
+
+.inner .degcircshape {
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    /* background: rgba(255, 55, 255, 1); */
+    background: var(--bgcolor);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner .degcircshape span {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: transparent;
+    color: var(--bodycolor);
+    width: 100%;
+    height: 230px;
+    text-align: center;
+    font-size: .6em;
+    line-height: 40px;
+    font-weight: 100;
+    transform: rotate(calc(10deg * var(--i)));
+    -webkit-transform: rotate(calc(10deg * var(--i)));
+    -moz-transform: rotate(calc(10deg * var(--i)));
+    -ms-transform: rotate(calc(10deg * var(--i)));
+    -o-transform: rotate(calc(10deg * var(--i)));
+    line-height: 24px;
+}
+
+.inner .quarters {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner .quarters span {
+    position: absolute;
+    top: 0px;
+    bottom: 250px;
+    width: 3px;
+    height: 250px;
+    background: var(--bodycolor);
+    transform: rotate(calc(10deg * var(--i)));
+    -webkit-transform: rotate(calc(10deg * var(--i)));
+    -moz-transform: rotate(calc(10deg * var(--i)));
+    -ms-transform: rotate(calc(10deg * var(--i)));
+    -o-transform: rotate(calc(10deg * var(--i)));
+}
+
+.inner .quartercircshape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    background: var(--bgcolor);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    z-index: 1;
+}
+
+.inner .quartercircshape span {
+    position: absolute;
+    background: transparent;
+    color: var(--bodycolor);
+    width: 100%;
+    height: 250px;
+    text-align: center;
+    line-height: 70px;
+    font-weight: 600;
+    transform: rotate(calc(10deg * var(--i)));
+    -webkit-transform: rotate(calc(10deg * var(--i)));
+    -moz-transform: rotate(calc(10deg * var(--i)));
+    -ms-transform: rotate(calc(10deg * var(--i)));
+    -o-transform: rotate(calc(10deg * var(--i)));
+}
+
+.inner .needle {
+    position: absolute;
+    top: 35px;
+    width: 8px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    /* background: var(--blue); */
+    z-index: 5;
+}
+
+.inner .needle .circle {
+    position: absolute;
+    top: calc(100% - 15px);
+    width: 30px;
+    height: 30px;
+    background: var(--bodycolor);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    z-index: 5;
+}
+
+.inner .needle span {
+    position: absolute;
+    top: 0;
+    left: -4px;
+    z-index: 5;
+}
+
+.inner .needle span::before {
+    position: absolute;
+    top: 0;
+    content: '';
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 90px solid var(--red);
+    z-index: 5;
+}
+
+.inner .needle span::after {
+    position: absolute;
+    top: 90px;
+    content: '';
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 90px solid var(--bodycolor);
+    z-index: 5;
+}
+
+.static {
+    position: absolute;
+    width: 20px;
+    height: 180px;
+    /* background: var(--blue); */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.static .axis {
+    position: absolute;
+    top: calc(50% - 11px);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    box-shadow: 0px 0px 15px var(--axiscolor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.static .arrow {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.static .arrow .head {
+    position: absolute;
+    top: -40px;
+    width: 30px;
+    height: 70px;
+    /* border-width: 6px; */
+    border-bottom: 35px solid var(--hdgcolor);
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    /* background-color: var(--bodycolor); */
+}
+
+.static .arrow .body {
+    position: absolute;
+    top: 24px;
+    width: 14px;
+    height: 156px;
+    border: 4px solid var(--hdgcolor);
+}
+
+.static .gauge-shine {
+    position: absolute;
+    top: calc(50% - 120px);
+    width: 245px;
+    height: 250px;
+    background: linear-gradient(#fff3, #fff0 45%, #fff0 50%, #fff0 50%, #fff0 100%);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.gear-container {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.gear-container .gear {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: var(--bodycolor);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    margin: auto;
+    cursor: grab;
+}
+
+.gear-container .gear .center {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: var(--bgcolor);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gear-container .gear .center .outerarrow {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: var(--bodycolor);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.gear-container .gear .center .innerarrow {
+    position: absolute;
+    width: 22px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.gear-container .gear .center .innerarrow::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 10px);
+    border-bottom: 15px solid var(--bgcolor);
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+}
+
+.gear-container .gear .tooth {
+    position: absolute;
+    z-index: 1;
+    width: 10px;
+    height: 80px;
+    background: var(--bodycolor);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.459);
+}
+
+.gear-container .gear .tooth {
+    transform: rotate(calc(30deg * var(--i)));
+    -webkit-transform: rotate(calc(30deg * var(--i)));
+    -moz-transform: rotate(calc(30deg * var(--i)));
+    -ms-transform: rotate(calc(30deg * var(--i)));
+    -o-transform: rotate(calc(30deg * var(--i)));
+}

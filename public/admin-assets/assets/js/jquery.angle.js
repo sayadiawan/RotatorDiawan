@@ -46,6 +46,7 @@
     // object instance
     $.angle = function(container, configs) {
         var options = $.extend({}, $.fn.angle.defaults, configs);
+        
         // store a reference to the slider object
         var $angle = $(container);
         $.data(container, 'angle', $angle);
