@@ -15,6 +15,7 @@
     <script type="text/javascript" src="{{ asset('admin-assets/assets/js/jquery.angle.js') }}"></script>
     <script>
         var degrees = 0;
+        let hdgknob;
     </script>
 
 
@@ -282,6 +283,47 @@
 
 @push('after-script')
     <script type="text/javascript">
+        document.addEventListener('mousemove', (evt) => {
+            var degrees = 360 - normalizeDeg(hdgknob.deg);
+            console.log(degrees);
+
+            if (degrees <= 36 || degrees == 360) {
+                degrees = 0;
+
+            } else if (degrees > 36 && degrees <= 72) {
+                degrees = 1;
+
+            } else if (degrees > 72 && degrees <= 108) {
+                degrees = 2;
+
+            } else if (degrees > 108 && degrees <= 144) {
+                degrees = 3;
+
+            } else if (degrees > 144 && degrees <= 180) {
+                degrees = 4;
+
+            } else if (degrees > 180 && degrees <= 216) {
+                degrees = 5;
+
+            } else if (degrees > 216 && degrees <= 252) {
+                degrees = 6;
+
+            } else if (degrees > 252 && degrees <= 288) {
+                degrees = 7;
+
+            } else if (degrees > 288 && degrees <= 324) {
+                degrees = 8;
+
+            } else if (degrees > 324 && degrees < 360) {
+                degrees = 9;
+
+            }
+            $('#angle-view1').find("img[data-id='" + degrees + "']").css('display', 'inline');
+            $('#angle-view1').find("img[data-id!='" + degrees + "']").css('display', 'none');
+            $('#angle-view1').attr('data-current', degrees);
+            currentImage = degrees;
+
+        }, );
         $(document).ready(function() {
             $('#angle-view1').angle({
                 speed: 1,

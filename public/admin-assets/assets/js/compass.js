@@ -177,7 +177,7 @@ class HDGknob extends HDGGauge {
 }
 
 window.onload = ((w, d) => {
-    let hdgknob = new HDGknob(0);
+    hdgknob = new HDGknob(0);
     document.addEventListener('mousemove', (evt) =>{
         var degrees=360 - normalizeDeg(hdgknob.deg);
         console.log(degrees);
