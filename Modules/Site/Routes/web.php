@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Route::prefix('device')->group(function() {
 
 // Route::delete('/device/command/delete', 'DeviceController@command_destroy');
-// Route::get('/device/command/{id}', 'DeviceController@command');
+Route::get('/site/delete/{id}', 'SiteController@destroy');
 Route::resource("site", SiteController::class);
 // Route::get('/device-data', 'DeviceController@json');
 

@@ -38,14 +38,12 @@ class SiteController extends Controller
   public function rules($request)
   {
     $rule = [
-      'name_devices' => 'required',
-      'alias_devices' => 'required',
-      'type' => 'required'
+      'site_id_number' => 'required',
+      'site_name' => 'required'
     ];
     $pesan = [
-      'name_devices.required' => 'Nama device wajib diisi!',
-      'alias_devices.required' => 'Nama alias device wajib diisi!',
-      'type.required' => 'Type device wajib diisi!'
+      'site_id_number.required' => 'ID Site wajib diisi!',
+      'site_name.required' => 'Site Name wajib diisi!'
     ];
 
     return Validator::make($request, $rule, $pesan);
@@ -80,6 +78,7 @@ class SiteController extends Controller
     // dd($query);
 
     $result = $query
+    ->orderBy('created_at')
       // ->filter(request(['search']))
       ->paginate(10)
       ->withQueryString();
@@ -200,8 +199,8 @@ class SiteController extends Controller
    */
   public function create()
   {
-    $data_icon = Icon::orderBy('created_at', 'desc')->get();
-    return view('device::create', compact('data_icon'));
+    // $data_icon = Icon::orderBy('created_at', 'desc')->get();
+    return view('site::create');
   }
 
   /**
@@ -223,11 +222,8 @@ class SiteController extends Controller
         $id_sites = [];
 
         $device = new Site();
-        $device->name_devices = $request->post('name_devices');
-        $device->alias_devices = $request->post('alias_devices');
-        $device->type = $request->post('type');
-        $device->icons_id = $request->post('icons');
-        $device->client_id = "c8879e6e-db31-44e4-905e-ee87f238076a";
+        $device->site_id_number = $request->post('site_id_number');
+        $device->site_name = $request->post('site_name');
         $simpan = $device->save();
         DB::commit();
 
@@ -277,15 +273,9 @@ class SiteController extends Controller
   public function show($id)
   {
     $data = Site::find($id);
-    $code = '
-            //Client ID
-            String clientId = "c8879e6e-db31-44e4-905e-ee87f238076a";
-            //User ID
-            String userId = "c8879e6e-db31-44e4-905e-ee87f238076a";
-            //ID Site
-            String idDevice = "' . $id . '";
-            ';
-    return view('device::show', ['get_data' => $data, 'code' => $code, 'id' => $id]);
+    
+    
+    return view('site::show', ['get_data' => $data, 'id' => $id]);
   }
 
   /**
@@ -368,9 +358,9 @@ class SiteController extends Controller
     $hapus = $query->delete();
 
     if ($hapus == true) {
-      return response()->json(['status' => true, 'pesan' => "Data device berhasil dihapus!"], 200);
+      return response()->json(['status' => true, 'pesan' => "Data Site berhasil dihapus!"], 200);
     } else {
-      return response()->json(['status' => false, 'pesan' => "Data device tidak berhasil dihapus!"], 400);
+      return response()->json(['status' => false, 'pesan' => "Data Site tidak berhasil dihapus!"], 400);
     }
   }
 

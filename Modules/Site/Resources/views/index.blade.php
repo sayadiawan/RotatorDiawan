@@ -27,7 +27,7 @@
                         <h5 class="mb-0">Data Site</h5>
 
                         @if (isAccess('create', $get_module, auth()->user()->roles))
-                            <a href="{{ route('smarthome.create') }}">
+                            <a href="{{ route('site.create') }}">
                                 <button type="button" class="btn btn-primary btn-icon-text">
                                     <i class="fa fa-plus btn-icon-prepend"></i>
                                     Tambah
@@ -39,7 +39,7 @@
                     <div class="card-body">
                         <div class="row mb-3">
 
-                            <form action="{{ route('smarthome.index') }}" method="GET" id="form-search">
+                            <form action="{{ route('site.index') }}" method="GET" id="form-search">
                                 <div class="col-md-6 mb-3 float-end">
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text" id="basic-addon-search31"><i
@@ -80,7 +80,7 @@
                                                         <div class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="orederStatistics">
                                                             <a class="dropdown-item"
-                                                                href="{{ url('site/', $item->id_sites) }}">Lihat
+                                                                href="{{ url('site', $item->id_sites) }}">Lihat
                                                                 Site</a>
                                                             <div class="dropdown-divider"></div>
                                                             <a class="dropdown-item"
@@ -122,7 +122,7 @@
                                             ada data yang terkait.
                                         </p>
                                         @if (isAccess('create', $get_module, auth()->user()->roles))
-                                            <a href="{{ route('smarthome.create') }}" class="btn btn-primary">Tambahkan
+                                            <a href="{{ route('site.create') }}" class="btn btn-primary">Tambahkan
                                                 Data</a>
                                         @endif
                                     </div>
@@ -155,7 +155,7 @@
                             $.ajax({
                                 type: 'ajax',
                                 method: 'get',
-                                url: '/smarthome/delete/' + kode,
+                                url: '/site/delete/' + kode,
                                 async: true,
                                 dataType: 'json',
                                 success: function(response) {
